@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Roles</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Role</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                Name
+            </th>
+            
+            <th></th>
+        </tr>
+        @foreach (var item in ViewBag.Roles)
+        {
+            <tr>
+                <td>@item.Name</td>                
+                <td style="width: 150px">
+                    <div class="btn-group">
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        @*<a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id"><i class="fas fa-list-ul"></i></a>*@
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}

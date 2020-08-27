@@ -1,0 +1,13 @@
+﻿@model string
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+    <div class="btn-group">
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model">
+            <i class="far fa-edit"></i>
+        </a>
+        <a asp-action="Details" class="btn btn-success" asp-route-id="@Model"><i class="fas fa-list-ul"></i></a>
+        <a asp-action="Locout" class="btn btn-danger" asp-route-id="@Model">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </div>
